@@ -97,6 +97,10 @@ canvas {
   opacity: 0.8;
 }
 
+.default-image img{
+  height: 30em;
+}
+
 @media (max-width: 1200px) {
   .image-results {
     grid-template-columns: repeat(3, 1fr);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../style.css';
+import  SearchImg  from "../Images/SearchImg.avif";
 
 const ImageSearch = ({ onImageSelect }) => {
   const [images, setImages] = useState([]);
@@ -46,6 +47,14 @@ const ImageSearch = ({ onImageSelect }) => {
       {/* Loading and message display */}
       {isLoading && <p className="loading-message">Loading images...</p>}
       {message && <p className="error-message">{message}</p>}
+
+      {/* Show default image if no search results and no query */}
+      {images.length === 0 && query === "" && (
+        <div className="default-image">
+          <img src={SearchImg} alt="Default Search" />
+          <p>Type a keyword to search for images!</p>
+        </div>
+      )}
 
       <div className="image-results">
         {images.map((img) => (
