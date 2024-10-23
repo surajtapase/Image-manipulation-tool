@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './style.css';
+import ImageSearch from './Component/ImageSearch';
+import ImageCanvas from './Component/ImageCanvas';
 
-function App() {
+const App = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageSelect = (imageUrl) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const handleBack = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="app-heading">Transform Your Images with Ease!</h1> 
+      {!selectedImage ? (
+        <ImageSearch onImageSelect={handleImageSelect} />
+      ) : (
+        <ImageCanvas imageUrl={selectedImage} onBack={handleBack} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
