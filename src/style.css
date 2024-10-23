@@ -137,4 +137,9 @@ canvas {
   .app-heading {
     font-size: 1.2em;
   }
+
+  .default-image img{
+    height: 20em;
+  }
+
 }
